@@ -1,6 +1,6 @@
 ﻿using System;
 
-using ThirdPersonShooter.Utility;
+using ThirdPersonShooter.Utilities;
 
 using TMPro;
 
@@ -12,7 +12,7 @@ namespace ThirdPersonShooter.UI
 	[RequireComponent(typeof(Slider))]
 	public class VolumeSlider : MonoBehaviour
 	{
-		private const float MIN_VALUE = 0.001f;
+		private const float MIN_VALUE = 0.0001f;
 		private const float MAX_VALUE = 1f;
 
 		[SerializeField] private TextMeshProUGUI volumeText;
@@ -26,17 +26,16 @@ namespace ThirdPersonShooter.UI
 			slider = gameObject.GetComponent<Slider>();
 		}
 
-		private void Activate()
+		public void Activate()
 		{
 			parameter = GameManager.Instance.Settings[transform.GetSiblingIndex()];
 
 			slider.minValue = MIN_VALUE;
 			slider.maxValue = MAX_VALUE;
-
 			sliderName = parameter.Replace("Volume", "");
 
 			slider.value = PlayerPrefs.GetFloat(parameter, MAX_VALUE);
-			GameManager.Instance.Settings.SetVolume(parameter,slider.value);
+			GameManager.Instance.Settings.SetVolume(parameter, slider.value);
 			UpdateText();
 			
 			slider.onValueChanged.AddListener(OnSliderValueChanged);

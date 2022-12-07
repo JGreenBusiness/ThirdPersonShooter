@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 namespace ThirdPersonShooter.Entities.Player
 {
 	public class CameraMotor : MonoBehaviour
 	{
 		private InputAction LookAction => lookActionReference.action;
+		
+		[SerializeField, Range(0, 1)] private float sensitivity = 1f;
 
-		[SerializeField, Range(0, 1)] private float sensitivity = 1;
-
-		[Header("Components")] [SerializeField]
-		private InputActionReference lookActionReference;
-
+		[Header("Components")] 
+		[SerializeField] private InputActionReference lookActionReference;
 		[SerializeField] private new Camera camera;
 
-		[Header("Collision")] [SerializeField] private float collisionRadius = .5f;
-		[SerializeField] private float distance = .3f;
+		[Header("Collision")] 
+		[SerializeField] private float collisionRadius = .5f;
+		[SerializeField] private float distance = 3f;
 		[SerializeField] private LayerMask collisionLayers;
 
 		private void OnValidate() => camera.transform.localPosition = Vector3.back * distance;
@@ -26,7 +25,6 @@ namespace ThirdPersonShooter.Entities.Player
 			Matrix4x4 defaultMat = Gizmos.matrix;
 
 			Gizmos.matrix = camera.transform.localToWorldMatrix;
-
 			Gizmos.color = new Color(0, .8f, 0, .8f);
 			Gizmos.DrawWireSphere(Vector3.zero, collisionRadius);
 
@@ -45,12 +43,11 @@ namespace ThirdPersonShooter.Entities.Player
 		private void OnDisable()
 		{
 			camera.transform.localPosition = Vector3.back * distance;
-			LookAction.performed += OnLookPerformed;
+			LookAction.performed -= OnLookPerformed;
 
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
 		}
-
 
 		private void FixedUpdate() => CameraCollision();
 

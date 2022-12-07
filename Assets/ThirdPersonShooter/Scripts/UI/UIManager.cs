@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
-using UnityEngine.Rendering;
 
 namespace ThirdPersonShooter.UI
 {
@@ -19,7 +17,7 @@ namespace ThirdPersonShooter.UI
 		[SerializeField] private AudioSource uiSource;
 		[SerializeField] private MenuBase[] menus;
 
-		private readonly Dictionary<string, MenuBase> menuDictionary = new SerializedDictionary<string, MenuBase>();
+		private readonly Dictionary<string, MenuBase> menuDictionary = new Dictionary<string, MenuBase>();
 		private readonly List<string> activeMenus = new List<string>();
 
 		private void Start()
@@ -28,8 +26,7 @@ namespace ThirdPersonShooter.UI
 			{
 				if(!menuDictionary.ContainsKey(menu.ID))
 				{
-					menuDictionary.Add(menu.ID,menu);
-
+					menuDictionary.Add(menu.ID, menu);
 					if(menu.IsDefault)
 					{
 						activeMenus.Add(menu.ID);
@@ -48,7 +45,7 @@ namespace ThirdPersonShooter.UI
 			}
 		}
 
-		public void SetAudioListenerState(bool _active) => uiListener.enabled = true;
+		public void SetAudioListenerState(bool _active) => uiListener.enabled = _active;
 
 		public void PlaySound(AudioClip _clip) => uiSource.PlayOneShot(_clip);
 
@@ -72,11 +69,12 @@ namespace ThirdPersonShooter.UI
 
 		private void DeactivateMenu(string _id)
 		{
-			activeMenus.Remove(_id);
-			menuDictionary[_id].OnCloseMenu(this);
-			menuDictionary[_id].SetVisible(false);
+			if(activeMenus.Contains(_id))
+			{
+				activeMenus.Remove(_id);
+				menuDictionary[_id].OnCloseMenu(this);
+				menuDictionary[_id].SetVisible(false);
+			}
 		}
-
-		
 	}
 }

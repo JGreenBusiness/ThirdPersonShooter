@@ -1,4 +1,4 @@
-﻿namespace ThirdPersonShooter.Utility
+﻿namespace ThirdPersonShooter.Utilities
 {
 	public static class MathFunctions
 	{

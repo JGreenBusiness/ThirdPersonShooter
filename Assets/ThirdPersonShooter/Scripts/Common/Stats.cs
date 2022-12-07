@@ -7,7 +7,6 @@ namespace ThirdPersonShooter
 	[Serializable]
 	public struct Stats
 	{
-		// Properties initialised with '=>' are only getters
 		public float Speed => speed * SpeedModifier;
 		public float MaxHealth => maxHealth;
 		public float Range => range;
@@ -19,7 +18,7 @@ namespace ThirdPersonShooter
 
 		public Action<float> onHealthChanged;
 		public Action onDeath;
-		
+
 		[SerializeField, Min(1.0f)] private float maxHealth;
 		[SerializeField, Range(.1f, 10f)] private float speed;
 		[SerializeField] private float range;
@@ -31,6 +30,5 @@ namespace ThirdPersonShooter
 			Health = maxHealth;
 			SpeedModifier = 1.0f;
 		}
-		
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
 namespace ThirdPersonShooter
@@ -17,9 +15,7 @@ namespace ThirdPersonShooter
 			foreach(string parameter in parameters)
 			{
 				if(parameter.Contains("Volume"))
-				{
 					SetVolume(parameter, PlayerPrefs.GetFloat(parameter, 100));
-				}
 			}
 		}
 
@@ -30,8 +26,7 @@ namespace ThirdPersonShooter
 
 		public void SetVolume(string _id, float _value)
 		{
-			// 0.0001 - 1
-
+			//0.0001 - 1
 			mixer.SetFloat(_id, Mathf.Log10(_value) * 20);
 			PlayerPrefs.SetFloat(_id, _value);
 		}

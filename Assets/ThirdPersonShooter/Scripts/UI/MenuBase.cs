@@ -12,10 +12,8 @@ namespace ThirdPersonShooter.UI
 		[SerializeField] private bool isDefault;
 
 		public void SetVisible(bool _visible) => gameObject.SetActive(_visible);
-		
-		public virtual void OnOpenMenu(UIManager _manager){ }
-		public virtual void OnCloseMenu(UIManager _manager){ }
-		
-		
+
+		public virtual void OnOpenMenu(UIManager _manager) { }
+		public virtual void OnCloseMenu(UIManager _manager) { }
 	}
 }

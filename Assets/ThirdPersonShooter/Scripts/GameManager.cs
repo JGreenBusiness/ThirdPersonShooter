@@ -10,7 +10,7 @@ namespace ThirdPersonShooter
 	{
 		public LevelManager LevelManager { get; private set; }
 		public SettingsManager Settings { get; private set; }
-		
+
 		public PlayerEntity Player { get; set; }
 
 		public bool IsPaused { get; private set; }
@@ -26,7 +26,6 @@ namespace ThirdPersonShooter
 				LevelManager = gameObject.GetComponent<LevelManager>();
 				Settings = gameObject.GetComponent<SettingsManager>();
 				LevelManager.LoadUI();
-
 			}
 		}
 
@@ -43,17 +42,11 @@ namespace ThirdPersonShooter
 		{
 			IsPaused = !IsPaused;
 			Time.timeScale = IsPaused ? 0 : 1;
-
+			
 			if(IsPaused)
-			{
 				UIManager.ShowMenu("Pause");
-				
-			}
 			else
-			{
 				UIManager.HideMenu("Pause");
-			}
 		}
-		
 	}
 }

@@ -40,10 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 59987965180291996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fd3b48d6c0e49db9f5c26dc16884f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 31fc2ce47f6c42f1ad30a4652cfdace1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alignmentDamping: 0.05
+  alignmentDamping: 0.1
   moveActionReference: {fileID: 4627675376221691323, guid: 77b3d1416dde14f46a9554f83bc0803a, type: 3}
   camera: {fileID: 8454668937002197190}
   render: {fileID: 8100725978912616653}
@@ -75,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320087784093234412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.5}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2425988764464701070}
@@ -173,6 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5653660942691917728}
+  - component: {fileID: 3458353521533289928}
   m_Layer: 3
   m_Name: Weapon
   m_TagString: Player
@@ -194,6 +195,21 @@ Transform:
   m_Father: {fileID: 4427135073608551960}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3458353521533289928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935815009261385346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ef7e26a594656bba5b49391d41a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootAction: {fileID: -5453926461722317942, guid: 77b3d1416dde14f46a9554f83bc0803a, type: 3}
+  shootPoint: {fileID: 8100725978912616603}
+  bulletLine: {fileID: 7009418059395628581, guid: a2a75602103dc334db79a7c5c3f5ea39, type: 3}
 --- !u!1 &2283800750504297818
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,14 +251,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2283800750504297818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5765c267232416bb671421aab72f5fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 79bec94c78e145808bbcfc09176bbf58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.5
+  sensitivity: 0.582
   lookActionReference: {fileID: -7455557370942528666, guid: 77b3d1416dde14f46a9554f83bc0803a, type: 3}
   camera: {fileID: 4053877252502517457}
   collisionRadius: 0.5
-  distance: 2.5
+  distance: 3
   collisionLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -286,8 +302,8 @@ AudioSource:
   m_GameObject: {fileID: 2325443594267423948}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3324391584464827546, guid: f0a1014a308257849b0a1898fa21bf0d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 9922a12f34d0a084aab32de985459723, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -413,8 +429,8 @@ AudioSource:
   m_GameObject: {fileID: 2628702177301935459}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3324391584464827546, guid: f0a1014a308257849b0a1898fa21bf0d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -671,15 +687,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7671543935481913345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1c694158df457cb6955c4d23e320e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ae8fc671fd94eadab2200133fb40101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
     maxHealth: 10
     speed: 5
     range: 5
-    damage: 1
+    damage: 5
     attackRate: 0.25
+  pauseAction: {fileID: 7864540878235141558, guid: 77b3d1416dde14f46a9554f83bc0803a, type: 3}
+  input: {fileID: 4211010969622382880}
+  weapon: {fileID: 3458353521533289928}
+  hurtSource: {fileID: 5178402897360674780}
+  deathSource: {fileID: 4692861201741519500}
 --- !u!1 &8100725978912451745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,7 +2128,7 @@ GameObject:
   - component: {fileID: 8100725978912616653}
   - component: {fileID: 8100725978903060349}
   m_Layer: 3
-  m_Name: Player
+  m_Name: Render
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

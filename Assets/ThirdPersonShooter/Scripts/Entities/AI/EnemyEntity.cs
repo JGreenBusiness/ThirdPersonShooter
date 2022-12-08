@@ -42,7 +42,7 @@ namespace ThirdPersonShooter.AI
 		private void Start()
 		{
 			stats.Start();
-			stats.onDeath += OnDie;
+			stats.onDeath += OnDied;
 			stats.onHealthChanged += OnDamaged;
 
 			agent = gameObject.GetComponent<NavMeshAgent>();
@@ -57,7 +57,7 @@ namespace ThirdPersonShooter.AI
 
 		private void OnDestroy()
 		{
-			stats.onDeath -= OnDie;
+			stats.onDeath -= OnDied;
 			stats.onHealthChanged -= OnDamaged;
 			player.Stats.onDeath -= OnPlayerDied;
 
@@ -92,11 +92,12 @@ namespace ThirdPersonShooter.AI
 
 		private void OnDamaged(float _health) => hurtSource.Play();
 
-		private void OnDie()
+		private void OnDied()
 		{
 			animator.SetTrigger(deadHash);
 			collider.enabled = false;
 			deathSource.Play();
+			player.AddScore(value);
 		}
 
 		private void OnPlayerDied()

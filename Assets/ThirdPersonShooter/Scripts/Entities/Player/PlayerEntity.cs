@@ -14,6 +14,8 @@ namespace ThirdPersonShooter.Entities.Player
 
 		public Action<int> onScoreUpdated;
 
+		public Weapon Weapon => weapon;
+
 		[SerializeField] private Stats stats;
 		[SerializeField] private InputActionReference pauseAction;
 

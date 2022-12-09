@@ -14,6 +14,7 @@ namespace ThirdPersonShooter.UI
 		private PlayerEntity player;
 
 		[SerializeField] private Slider healthBar;
+		[SerializeField] private Slider ammoBar;
 		[SerializeField] private TextMeshProUGUI scoreText;
 
 		public override void OnOpenMenu(UIManager _manager)
@@ -27,6 +28,10 @@ namespace ThirdPersonShooter.UI
 			healthBar.maxValue = player.Stats.MaxHealth;
 			healthBar.value = player.Stats.Health;
 
+			player.Weapon.onAmmoChanged += OnAmmoChanged;
+			ammoBar.maxValue = player.Weapon.MaxAmmo;
+			ammoBar.value = player.Weapon.Ammo;
+
 			scoreText.text = "Score: 0";
 		}
 
@@ -38,6 +43,7 @@ namespace ThirdPersonShooter.UI
 		}
 
 		private void OnHealthChanged(float _health) => healthBar.value = _health;
+		private void OnAmmoChanged(int _ammo) => ammoBar.value = _ammo;
 
 		private void OnPlayerDied() => UIManager.ShowMenu("Game Over");
 

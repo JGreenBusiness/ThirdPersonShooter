@@ -208,8 +208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootAction: {fileID: -5453926461722317942, guid: 77b3d1416dde14f46a9554f83bc0803a, type: 3}
+  reloadAction: {fileID: 8911355115366947826, guid: 77b3d1416dde14f46a9554f83bc0803a, type: 3}
   shootPoint: {fileID: 8100725978912616603}
   bulletLine: {fileID: 7009418059395628581, guid: a2a75602103dc334db79a7c5c3f5ea39, type: 3}
+  maxBullets: 5
 --- !u!1 &2283800750504297818
 GameObject:
   m_ObjectHideFlags: 0
